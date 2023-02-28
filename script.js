@@ -19,7 +19,23 @@ function addBookToLibrary() {
   //push userInput into the array, making it an array of book names
   myLibrary.push(userInput);
   console.log(myLibrary);
+
   return myLibrary;
 }
 
 add.addEventListener("click", addBookToLibrary);
+
+const list = document.querySelector(".list");
+
+const display = document.querySelector(".display");
+
+display.addEventListener("click", displayBook);
+
+function displayBook() {
+  myLibrary.forEach((book) => {
+    const bookEl = document.createElement("p");
+    bookEl.textContent = book;
+    list.appendChild(bookEl);
+    console.log(bookEl);
+  });
+}
