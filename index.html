@@ -6,11 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <h1>Library</h1>
     <button class="add">Add Book</button>
+    <dialog class="modal">
+      <h2>Add new book</h2>
+      <form action="" method="dialog">
+        <!-- <div class="form"> -->
+        <input type="text" placeholder="Title" />
+        <input type="text" placeholder="Author" />
+        <input type="text" placeholder="Pages" />
+        <div class="radio">
+          <label for="read">Have you read it?</label>
+          <input type="radio" id="read" name="read_yet" />
+        </div>
+        <button class="submit">Submit</button>
+        <!-- </div> -->
+      </form>
+      <!-- <button class="close">close modal</button> -->
+    </dialog>
     <div class="list"></div>
     <button class="display">Display Book</button>
   </body>

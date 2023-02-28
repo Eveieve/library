@@ -23,7 +23,7 @@ function addBookToLibrary() {
   return myLibrary;
 }
 
-add.addEventListener("click", addBookToLibrary);
+// add.addEventListener("click", addBookToLibrary);
 
 const list = document.querySelector(".list");
 
@@ -39,3 +39,10 @@ function displayBook() {
     console.log(bookEl);
   });
 }
+
+const modal = document.querySelector(".modal");
+const closeModal = document.querySelector(".close");
+
+add.addEventListener("click", () => {
+  modal.showModal();
+});

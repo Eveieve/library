@@ -2,3 +2,51 @@
   width: 10rem;
   height: 10rem;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+input {
+  border: 0;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+input:focus {
+  outline: 0;
+}
+.radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button.submit {
+  border: 0;
+  border-radius: 0.5rem;
+  height: 2rem;
+}
+
+button.submit:hover {
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);
+  background: rgb(0 0 0 / 0.1);
+}
+h2 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.modal {
+  background-color: #b0b3ec;
+  min-width: 15%;
+  min-height: 40%;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);
+}
+.modal::backdrop {
+  /* background-color: ; */
+  background: rgb(0 0 0 / 0.4);
+}
