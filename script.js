@@ -10,20 +10,16 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-let userInput;
+let title = "";
 
 const add = document.querySelector(".add");
 
 function addBookToLibrary() {
-  userInput = prompt("Which?");
-  //push userInput into the array, making it an array of book names
-  myLibrary.push(userInput);
+  title = document.getElementById("title").value;
+  myLibrary.push(title);
   console.log(myLibrary);
-
   return myLibrary;
 }
-
-// add.addEventListener("click", addBookToLibrary);
 
 const list = document.querySelector(".list");
 
@@ -41,8 +37,12 @@ function displayBook() {
 }
 
 const modal = document.querySelector(".modal");
-const closeModal = document.querySelector(".close");
 
 add.addEventListener("click", () => {
   modal.showModal();
 });
+
+const submit = document.querySelector(".submit");
+
+submit.addEventListener("click", addBookToLibrary);
+submit.addEventListener("click", displayBook);
