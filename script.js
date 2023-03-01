@@ -39,6 +39,7 @@ function displayBook() {
     console.log(bookEl);
   });
   myLibrary = [];
+  document.querySelector("form").reset();
 }
 
 const modal = document.querySelector(".modal");
