@@ -10,19 +10,20 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-let title;
-let author;
-let pages;
-
 const add = document.querySelector(".add");
 
 function addBookToLibrary() {
-  title = document.getElementById("title").value;
-  author = document.getElementById("author").value;
-  pages = document.getElementById("pages").value;
+  let title = document.getElementById("title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.getElementById("pages").value;
+  let read = document.getElementById("read");
+
   myLibrary.push(title);
   myLibrary.push(author);
   myLibrary.push(pages);
+  if (read.checked === true) {
+    myLibrary.push("Read");
+  } else myLibrary.push("Not read");
   console.log(myLibrary);
   return myLibrary;
 }
