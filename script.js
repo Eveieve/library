@@ -35,12 +35,21 @@ const display = document.querySelector(".display");
 function displayBook() {
   myLibrary.forEach((book) => {
     const bookEl = document.createElement("p");
+    bookEl.classList.add = "property";
     bookEl.textContent = book;
     list.appendChild(bookEl);
     console.log(bookEl);
   });
   myLibrary = [];
   document.querySelector("form").reset();
+  const remove = document.createElement("button");
+  remove.textContent = "Remove";
+  remove.classList.add = ("removeBtn", "property");
+  list.appendChild(remove);
+  function removeList() {
+    list.remove();
+  }
+  remove.addEventListener("click", removeList);
 }
 
 const modal = document.querySelector(".modal");
