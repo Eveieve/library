@@ -10,13 +10,20 @@ function Book(title, author, pages, isRead) {
   };
 }
 
-let title = "";
+let title;
+let author;
+let pages;
 
 const add = document.querySelector(".add");
 
 function addBookToLibrary() {
   title = document.getElementById("title").value;
+  author = document.getElementById("author").value;
+  pages = document.getElementById("pages").value;
   myLibrary.push(title);
+  myLibrary.push(author);
+  myLibrary.push(pages);
+
   console.log(myLibrary);
   return myLibrary;
 }
@@ -24,8 +31,6 @@ function addBookToLibrary() {
 const list = document.querySelector(".list");
 
 const display = document.querySelector(".display");
-
-display.addEventListener("click", displayBook);
 
 function displayBook() {
   myLibrary.forEach((book) => {
