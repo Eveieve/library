@@ -28,22 +28,23 @@ function addBookToLibrary() {
   return myLibrary;
 }
 
-const card = document.createElement("div");
 const container = document.querySelector(".container");
 const display = document.querySelector(".display");
 
 function displayBook() {
-  myLibrary.forEach((book) => {
-    container.appendChild(card);
-    card.style.cssText =
-      "background-color: #3A98B9; text-align: center; max-width:10rem; border-radius:.5rem; padding: 1rem;";
+  const card = document.createElement("div");
 
+  myLibrary.forEach((book) => {
     const bookEl = document.createElement("p");
     bookEl.classList.add = "property";
     bookEl.textContent = book;
     card.appendChild(bookEl);
     console.log(bookEl);
   });
+  container.appendChild(card);
+  card.style.cssText =
+    "background-color: #3A98B9; text-align: center; min-width:10rem; border-radius:.5rem; padding: 1rem;";
+
   myLibrary = [];
   document.querySelector("form").reset();
   const remove = document.createElement("button");
