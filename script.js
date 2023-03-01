@@ -23,7 +23,6 @@ function addBookToLibrary() {
   myLibrary.push(title);
   myLibrary.push(author);
   myLibrary.push(pages);
-
   console.log(myLibrary);
   return myLibrary;
 }
@@ -39,6 +38,7 @@ function displayBook() {
     list.appendChild(bookEl);
     console.log(bookEl);
   });
+  myLibrary = [];
 }
 
 const modal = document.querySelector(".modal");
