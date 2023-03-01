@@ -28,16 +28,20 @@ function addBookToLibrary() {
   return myLibrary;
 }
 
-const list = document.querySelector(".list");
-
+const card = document.createElement("div");
+const container = document.querySelector(".container");
 const display = document.querySelector(".display");
 
 function displayBook() {
   myLibrary.forEach((book) => {
+    container.appendChild(card);
+    card.style.cssText =
+      "background-color: #3A98B9; text-align: center; max-width:10rem; border-radius:.5rem; padding: 1rem;";
+
     const bookEl = document.createElement("p");
     bookEl.classList.add = "property";
     bookEl.textContent = book;
-    list.appendChild(bookEl);
+    card.appendChild(bookEl);
     console.log(bookEl);
   });
   myLibrary = [];
@@ -45,11 +49,11 @@ function displayBook() {
   const remove = document.createElement("button");
   remove.textContent = "Remove";
   remove.classList.add = ("removeBtn", "property");
-  list.appendChild(remove);
-  function removeList() {
-    list.remove();
+  card.appendChild(remove);
+  function removeCard() {
+    card.remove();
   }
-  remove.addEventListener("click", removeList);
+  remove.addEventListener("click", removeCard);
 }
 
 const modal = document.querySelector(".modal");
