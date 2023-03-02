@@ -16,14 +16,22 @@ function addBookToLibrary() {
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
-  let read = document.getElementById("read");
+  let isRead = document.getElementById("read");
 
-  myLibrary.push(title);
-  myLibrary.push(author);
-  myLibrary.push(pages);
-  if (read.checked === true) {
-    myLibrary.push("Read");
-  } else myLibrary.push("Not read");
+  if (isRead.checked === true) {
+    isRead = "Read";
+  } else isRead = "Not read yet";
+
+  //Create book object for each add
+  //Need to put numbers on objects?
+  const book = new Book(title, author, pages, isRead);
+  console.log(book);
+  myLibrary.push(book.title, book.author, book.pages, book.isRead);
+
+  // myLibrary.push(title);
+  // myLibrary.push(author);
+  // myLibrary.push(pages);
+
   console.log(myLibrary);
   return myLibrary;
 }
@@ -47,10 +55,12 @@ function displayBook() {
 
   myLibrary = [];
   document.querySelector("form").reset();
+
   const remove = document.createElement("button");
   remove.textContent = "Remove";
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
+
   function removeCard() {
     card.remove();
   }
