@@ -5,9 +5,9 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
-  this.info = function () {
-    return `${this.name} is by ${this.author}, ${this.pages}pages.`;
-  };
+  // this.info = function () {
+  //   return `${this.name} is by ${this.author}, ${this.pages}pages.`;
+  // };
 }
 
 const add = document.querySelector(".add");
@@ -22,16 +22,10 @@ function addBookToLibrary() {
     isRead = "Read";
   } else isRead = "Not read yet";
 
-  //Create book object for each add
-  //Need to put numbers on objects?
   const book = new Book(title, author, pages, isRead);
   console.log(book);
-  myLibrary.push(book.title, book.author, book.pages, book.isRead);
-
-  // myLibrary.push(title);
-  // myLibrary.push(author);
-  // myLibrary.push(pages);
-
+  // myLibrary.push(book.title, book.author, book.pages, book.isRead);
+  myLibrary.push(book);
   console.log(myLibrary);
   return myLibrary;
 }
@@ -41,14 +35,19 @@ const display = document.querySelector(".display");
 
 function displayBook() {
   const card = document.createElement("div");
+  // display values of the object, which is an item in the arry
 
-  myLibrary.forEach((book) => {
-    const bookEl = document.createElement("p");
-    bookEl.classList.add = "property";
-    bookEl.textContent = book;
-    card.appendChild(bookEl);
-    console.log(bookEl);
-  });
+  for (const property in myLibrary[myLibrary.length - 1]) {
+    console.log(`${property}: ${myLibrary[myLibrary.length - 1][property]}`);
+  }
+
+  // myLibrary.forEach((book) => {
+  //   const bookEl = document.createElement("p");
+  //   bookEl.classList.add = "property";
+  //   bookEl.textContent = book;
+  //   card.appendChild(bookEl);
+  //   console.log(bookEl);
+  // });
   container.appendChild(card);
   card.style.cssText =
     "background-color: #3A98B9; text-align: center; min-width:10rem; border-radius:.5rem; padding: 1rem;";
@@ -75,5 +74,7 @@ add.addEventListener("click", () => {
 
 const submit = document.querySelector(".submit");
 
-submit.addEventListener("click", addBookToLibrary);
-submit.addEventListener("click", displayBook);
+submit.addEventListener("click", () => {
+  addBookToLibrary();
+  displayBook();
+});
