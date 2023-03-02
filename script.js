@@ -39,6 +39,10 @@ function displayBook() {
 
   for (const property in myLibrary[myLibrary.length - 1]) {
     console.log(`${property}: ${myLibrary[myLibrary.length - 1][property]}`);
+    const bookEl = document.createElement("p");
+    bookEl.textContent = `${myLibrary[myLibrary.length - 1][property]}`;
+    card.appendChild(bookEl);
+    console.log(bookEl);
   }
 
   // myLibrary.forEach((book) => {
