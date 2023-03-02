@@ -56,7 +56,7 @@ function displayBook() {
   card.style.cssText =
     "background-color: #3A98B9; text-align: center; min-width:10rem; border-radius:.5rem; padding: 1rem;";
 
-  myLibrary = [];
+  // myLibrary = [];
   document.querySelector("form").reset();
 
   const remove = document.createElement("button");
