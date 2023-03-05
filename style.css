@@ -6,9 +6,23 @@ body {
   display: grid;
   justify-content: center;
   justify-items: center;
-
+  background-color: rgb(246, 246, 201);
   gap: 2rem;
 }
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.add {
+  border-radius: 0.5rem;
+  width: 10rem;
+  height: 3rem;
+  font-size: large;
+  font-weight: bold;
+  border: none;
+  background-color: rgb(21, 52, 98);
+  color: rgb(231, 231, 231);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -45,7 +59,8 @@ h2 {
   margin-bottom: 1rem;
 }
 .modal {
-  background-color: #b0b3ec;
+  background-color: rgb(79, 160, 149);
+  color: white;
   min-width: 15%;
   min-height: 40%;
   border: 0;

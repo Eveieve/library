@@ -55,11 +55,13 @@ function displayBook() {
 
   container.appendChild(card);
   card.style.cssText =
-    "background-color: #3A98B9; text-align: center; min-width:10rem; border-radius:.5rem; padding: 2rem;";
+    "background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; border-radius:.5rem; padding: 2rem;";
 
   document.querySelector("form").reset();
 
   const remove = document.createElement("button");
+  remove.style.cssText =
+    "background-color: rgb(79, 160, 149); color: white; border: none; font-size: medium; font-weight: 700; border-radius: .3rem; width: 8rem; height: 2.5rem";
   remove.textContent = "Remove";
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
