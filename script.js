@@ -80,7 +80,7 @@ add.addEventListener("click", () => {
 
 const submit = document.querySelector(".submit");
 
-submit.addEventListener("click", () => {
+submit.addEventListener("submit", () => {
   addBookToLibrary();
   displayBook();
 });
