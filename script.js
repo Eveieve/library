@@ -78,9 +78,8 @@ add.addEventListener("click", () => {
   modal.showModal();
 });
 
-const submit = document.querySelector(".submit");
-
-submit.addEventListener("submit", () => {
+const form = document.querySelector("form");
+form.addEventListener("submit", () => {
   addBookToLibrary();
   displayBook();
 });
