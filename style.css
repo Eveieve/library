@@ -6,7 +6,6 @@ body {
   display: grid;
   justify-content: center;
   justify-items: center;
-  background-color: rgb(246, 246, 201);
   gap: 2rem;
 }
 * {

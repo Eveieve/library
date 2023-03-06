@@ -19,7 +19,11 @@ function addBookToLibrary() {
     isRead = "Read";
   } else isRead = "Not read yet";
 
+  //Each element/object is named Book?
   const book = new Book(title, author, pages, isRead);
+  console.log(book);
+  console.log(Book);
+  console.log(Object.getPrototypeOf(book));
 
   myLibrary.push(book);
 
