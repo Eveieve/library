@@ -30,7 +30,7 @@ function addBookToLibrary() {
 
 //get values from the modal input
 //grab add book button from html and make it a DOM
-//add a eventlistner to listen for click
+//add a eventListener to listen for click
 //when clicked, open up the modal
 
 const addBtn = document.querySelector(".add");
@@ -62,6 +62,7 @@ function displayBooks() {
   //loop through array and create Book for each element
   myLibrary.forEach((element) => {
     const eachBook = document.createElement("div");
+    eachBook.classList.add("eachBook");
     document.body.appendChild(eachBook);
     for (const property in element) {
       //create DOM element for each Book's property
@@ -69,8 +70,13 @@ function displayBooks() {
       //Insert text for each Book's property
       bookProperty.textContent = `${element[property]}`;
       //append the Book's property DOM to the eachBook card
+
       eachBook.appendChild(bookProperty);
       console.log(`${property}: ${element[property]}`);
     }
   });
+
+  const removeBtn = document.querySelector(".eachBook p:nth-child(5)");
+  // removeBtn.addEventListener("click");
+  console.log(removeBtn);
 }
