@@ -21,7 +21,7 @@ function addBookToLibrary() {
     isRead = "Read";
   } else isRead = "Not read yet";
 
-  const book = new Book();
+  const book = new Book(title, author, pages, isRead);
 
   myLibrary.push(book);
 
@@ -42,7 +42,28 @@ const form = document.querySelector("form");
 console.log(form);
 addBtn.addEventListener("click", () => {
   modalForm.showModal();
+});
+
+form.addEventListener("submit", () => {
   addBookToLibrary();
   form.reset();
-  //displayBooks in the myLibraryarray
+  //displayBooks in the myLibrary array
+  displayBooks();
 });
+const shelf = document.querySelector(".shelf");
+
+console.log(shelf);
+
+function displayBooks() {
+  //Remove the whole shelf except modal html element
+  while (shelf.childElementCount > 1) shelf.lastChild.remove();
+  console.log(shelf);
+  //loop through array and create Book for each element
+  myLibrary.forEach((element) => {
+    const eachBook = document.createElement("div");
+    document.body.appendChild(eachBook);
+    for (const property in element) {
+      console.log(`${property}: ${element[property]}`);
+    }
+  });
+}
