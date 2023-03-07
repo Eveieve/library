@@ -28,18 +28,13 @@ function addBookToLibrary() {
   return myLibrary;
 }
 
-//get values from the modal input
-//grab add book button from html and make it a DOM
-//add a eventListener to listen for click
-//when clicked, open up the modal
-
 const addBtn = document.querySelector(".add");
-console.log(addBtn);
+// console.log(addBtn);
 const modalForm = document.querySelector(".modal");
-console.log(modalForm);
+// console.log(modalForm);
 
 const form = document.querySelector("form");
-console.log(form);
+// console.log(form);
 addBtn.addEventListener("click", () => {
   modalForm.showModal();
 });
@@ -47,36 +42,37 @@ addBtn.addEventListener("click", () => {
 form.addEventListener("submit", () => {
   addBookToLibrary();
   form.reset();
-  //displayBooks in the myLibrary array
   displayBooks();
 });
 const shelf = document.querySelector(".shelf");
 
-console.log(shelf);
+// console.log(shelf);
 
 function displayBooks() {
   //Remove the whole shelf except modal html element
-  // > = was the problem!
   while (shelf.childElementCount > 1) shelf.lastChild.remove();
-  console.log(shelf);
+  // console.log(shelf);
   //loop through array and create Book for each element
-  myLibrary.forEach((element) => {
-    const eachBook = document.createElement("div");
-    eachBook.classList.add("eachBook");
-    document.body.appendChild(eachBook);
-    for (const property in element) {
-      //create DOM element for each Book's property
-      const bookProperty = document.createElement("p");
-      //Insert text for each Book's property
-      bookProperty.textContent = `${element[property]}`;
-      //append the Book's property DOM to the eachBook card
 
-      eachBook.appendChild(bookProperty);
-      console.log(`${property}: ${element[property]}`);
-    }
-  });
+  const eachBook = document.createElement("div");
+  eachBook.classList.add("eachBook");
+  document.body.appendChild(eachBook);
+
+  for (const property in myLibrary[myLibrary.length - 1]) {
+    const bookProperty = document.createElement("p");
+    bookProperty.textContent = `${myLibrary[myLibrary.length - 1][property]}`;
+    eachBook.appendChild(bookProperty);
+  }
 
   const removeBtn = document.querySelector(".eachBook p:nth-child(5)");
-  // removeBtn.addEventListener("click");
-  console.log(removeBtn);
+
+  removeBtn.addEventListener("click", () => {
+    removeCard();
+  });
+}
+
+function removeCard(index) {
+  //remove a Book on specific index
+  myLibrary.splice(index, 1);
+  displayBooks();
 }
