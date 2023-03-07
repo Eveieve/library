@@ -5,85 +5,44 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
+  this.remove = "Remove";
 }
 
 const add = document.querySelector(".add");
 
 function addBookToLibrary() {
+  //get values of each input
   let title = document.getElementById("title").value;
   let author = document.getElementById("author").value;
   let pages = document.getElementById("pages").value;
   let isRead = document.getElementById("read");
-
+  //assign value for checkbox on whether it's checked or not
   if (isRead.checked === true) {
     isRead = "Read";
   } else isRead = "Not read yet";
 
-  //Each element/object is named Book?
-  const book = new Book(title, author, pages, isRead);
-  console.log(book);
-  console.log(Book);
-  console.log(Object.getPrototypeOf(book));
+  const book = new Book();
 
   myLibrary.push(book);
 
   return myLibrary;
 }
 
-const container = document.querySelector(".container");
-const display = document.querySelector(".display");
+//get values from the modal input
+//grab add book button from html and make it a DOM
+//add a eventlistner to listen for click
+//when clicked, open up the modal
 
-function displayBook() {
-  const card = document.createElement("div");
-
-  for (const property in myLibrary[myLibrary.length - 1]) {
-    const bookEl = document.createElement("p");
-    bookEl.textContent = `${myLibrary[myLibrary.length - 1][property]}`;
-
-    card.appendChild(bookEl);
-  }
-
-  const readToggle = card.querySelector("p:nth-child(4)");
-
-  function toggle() {
-    if (readToggle.textContent === "Read") {
-      myLibrary[myLibrary.length - 1].isRead = "Not read yet";
-      readToggle.textContent = "Not read yet";
-    } else {
-      myLibrary[myLibrary.length - 1].isRead = "Read";
-      readToggle.textContent = "Read";
-    }
-  }
-
-  readToggle.addEventListener("click", toggle);
-
-  container.appendChild(card);
-  card.style.cssText =
-    "background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; border-radius:.5rem; padding: 2rem;";
-
-  document.querySelector("form").reset();
-
-  const remove = document.createElement("button");
-  remove.style.cssText =
-    "background-color: rgb(79, 160, 149); color: white; border: none; font-size: medium; font-weight: 700; border-radius: .3rem; width: 8rem; height: 2.5rem";
-  remove.textContent = "Remove";
-  remove.classList.add = ("removeBtn", "property");
-  card.appendChild(remove);
-
-  function removeCard() {
-    card.remove();
-  }
-  remove.addEventListener("click", removeCard);
-}
-
-const modal = document.querySelector(".modal");
-
-add.addEventListener("click", () => {
-  modal.showModal();
-});
+const addBtn = document.querySelector(".add");
+console.log(addBtn);
+const modalForm = document.querySelector(".modal");
+console.log(modalForm);
 
 const form = document.querySelector("form");
-form.addEventListener("submit", () => {
+console.log(form);
+addBtn.addEventListener("click", () => {
+  modalForm.showModal();
   addBookToLibrary();
-  displayBook();
+  form.reset();
+  //displayBooks in the myLibraryarray
 });
