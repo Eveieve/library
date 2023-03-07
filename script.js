@@ -56,6 +56,7 @@ console.log(shelf);
 
 function displayBooks() {
   //Remove the whole shelf except modal html element
+  // > = was the problem!
   while (shelf.childElementCount > 1) shelf.lastChild.remove();
   console.log(shelf);
   //loop through array and create Book for each element
@@ -63,6 +64,12 @@ function displayBooks() {
     const eachBook = document.createElement("div");
     document.body.appendChild(eachBook);
     for (const property in element) {
+      //create DOM element for each Book's property
+      const bookProperty = document.createElement("p");
+      //Insert text for each Book's property
+      bookProperty.textContent = `${element[property]}`;
+      //append the Book's property DOM to the eachBook card
+      eachBook.appendChild(bookProperty);
       console.log(`${property}: ${element[property]}`);
     }
   });
