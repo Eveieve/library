@@ -65,13 +65,12 @@ function displayBook(book, index) {
   }
   //Create remove button when display each Book too!
   const removeBtn = document.createElement("button");
-
   removeBtn.textContent = "Remove";
   eachBook.appendChild(removeBtn);
   // const removeBtn = document.querySelector(".eachBook p:nth-child(5)");
 
   removeBtn.addEventListener("click", () => {
-    removeCard();
+    removeBook(index);
   });
 }
 addBtn.addEventListener("click", () => {
@@ -83,10 +82,3 @@ form.addEventListener("submit", () => {
   form.reset();
   displayBooks();
 });
-
-// console.log(shelf);
-
-function removeCard(index) {
-  myLibrary.splice(index, 1);
-  displayBooks();
-}
