@@ -10,6 +10,17 @@ function Book(title, author, pages, isRead) {
 
 const add = document.querySelector(".add");
 
+function removeBook(index) {
+  myLibrary = myLibrary.splice(index, 1);
+  displayBooks(); //different from displayBook?
+}
+
+function toggle(index) {
+  myLibrary[index].isRead =
+    myLibrary[index].isRead === "Read" ? "Not read yet" : "Read";
+  displayBooks();
+}
+
 function addBookToLibrary() {
   //get values of each input
   let title = document.getElementById("title").value;
@@ -72,7 +83,6 @@ function displayBooks() {
 }
 
 function removeCard(index) {
-  //remove a Book on specific index
   myLibrary.splice(index, 1);
   displayBooks();
 }
