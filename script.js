@@ -73,6 +73,8 @@ function displayBook(book, index) {
     removeBook(index);
   });
 }
+
+const readToggle = document.querySelector(".eachBook p:nth-child(4)");
 addBtn.addEventListener("click", () => {
   modalForm.showModal();
 });
