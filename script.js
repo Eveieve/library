@@ -5,7 +5,7 @@ function Book(title, author, pages, isRead) {
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
-  this.remove = "Remove";
+  // this.remove = "Remove";
 }
 
 const add = document.querySelector(".add");
@@ -48,6 +48,32 @@ const displayBooks = () => {
   //Call displayBook for element in the array
   myLibrary.forEach(displayBook);
 };
+
+function displayBook(book, index) {
+  const eachBook = document.createElement("div");
+  //give eachBook an index
+  eachBook.dataset.index = index;
+
+  eachBook.classList.add("eachBook");
+  // document.body.appendChild(eachBook);
+
+  for (const property in book) {
+    const bookProperty = document.createElement("p");
+    //loop through properties of each Book item
+    bookProperty.textContent = `${book[property]}`;
+    eachBook.appendChild(bookProperty);
+  }
+  //Create remove button when display each Book too!
+  const removeBtn = document.createElement("button");
+
+  removeBtn.textContent = "Remove";
+  eachBook.appendChild(removeBtn);
+  // const removeBtn = document.querySelector(".eachBook p:nth-child(5)");
+
+  removeBtn.addEventListener("click", () => {
+    removeCard();
+  });
+}
 addBtn.addEventListener("click", () => {
   modalForm.showModal();
 });
@@ -59,24 +85,6 @@ form.addEventListener("submit", () => {
 });
 
 // console.log(shelf);
-
-function displayBook() {
-  const eachBook = document.createElement("div");
-  eachBook.classList.add("eachBook");
-  document.body.appendChild(eachBook);
-
-  for (const property in myLibrary[myLibrary.length - 1]) {
-    const bookProperty = document.createElement("p");
-    bookProperty.textContent = `${myLibrary[myLibrary.length - 1][property]}`;
-    eachBook.appendChild(bookProperty);
-  }
-
-  const removeBtn = document.querySelector(".eachBook p:nth-child(5)");
-
-  removeBtn.addEventListener("click", () => {
-    removeCard();
-  });
-}
 
 function removeCard(index) {
   myLibrary.splice(index, 1);
