@@ -24,10 +24,11 @@ function addBookToLibrary() {
 
   return myLibrary;
 }
+
 const container = document.querySelector(".container");
 const add = document.querySelector(".add");
 
-function displayBook(book) {
+function displayBook(book, index) {
   const card = document.createElement("div");
   for (const property in book) {
     const bookEl = document.createElement("p");
@@ -52,10 +53,10 @@ function displayBook(book) {
     displayBooks(); //
   }
 
-  function toggle(index) {
+  function toggle(i) {
     // Book at certain index...
-    myLibrary[index].isRead =
-      myLibrary[index].isRead === "Read" ? "Not read yet" : "Read";
+    myLibrary[i].isRead =
+      myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
     displayBooks();
   }
@@ -63,7 +64,7 @@ function displayBook(book) {
   remove.addEventListener("click", () => removeBook());
   // Toggle
   const readToggle = card.querySelector("p:nth-child(4)");
-  readToggle.addEventListener("click", () => toggle());
+  readToggle.addEventListener("click", () => toggle(index));
 
   container.appendChild(card);
   card.style.cssText =
