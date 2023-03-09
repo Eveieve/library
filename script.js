@@ -47,10 +47,10 @@ function displayBook(book, index) {
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
 
-  function removeBook() {
-    // remove one Book from the array
+  function removeBook(i) {
+    myLibrary.splice(i, 1);
     // eslint-disable-next-line no-use-before-define
-    displayBooks(); //
+    updateBooks(); //
   }
 
   function toggle(i) {
@@ -58,7 +58,7 @@ function displayBook(book, index) {
     myLibrary[i].isRead =
       myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
-    displayBooks();
+    updateBooks();
   }
 
   remove.addEventListener("click", () => removeBook());
@@ -72,7 +72,7 @@ function displayBook(book, index) {
 
   document.querySelector("form").reset();
 }
-const displayBooks = () => {
+const updateBooks = () => {
   while (container.childElementCount > 1) container.lastChild.remove();
   myLibrary.forEach(displayBook);
 };
@@ -86,5 +86,5 @@ add.addEventListener("click", () => {
 const form = document.querySelector("form");
 form.addEventListener("submit", () => {
   addBookToLibrary();
-  displayBooks();
+  updateBooks();
 });
