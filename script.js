@@ -28,13 +28,13 @@ function addBookToLibrary() {
 const container = document.querySelector(".container");
 const add = document.querySelector(".add");
 
-function displayBook(book, index) {
+function displayBook(book, indexOfBook) {
   const card = document.createElement("div");
   for (const property in book) {
     const bookEl = document.createElement("p");
 
     bookEl.textContent = `${book[property]}`;
-
+    console.log(indexOfBook); // already knows indexOfBook of each thing!
     card.appendChild(bookEl);
   }
 
@@ -54,17 +54,17 @@ function displayBook(book, index) {
   }
 
   function toggle(i) {
-    // Book at certain index...
+    // Book at certain indexOfBook...
     myLibrary[i].isRead =
       myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
     updateBooks();
   }
 
-  remove.addEventListener("click", () => removeBook());
+  remove.addEventListener("click", () => removeBook(indexOfBook));
   // Toggle
   const readToggle = card.querySelector("p:nth-child(4)");
-  readToggle.addEventListener("click", () => toggle(index));
+  readToggle.addEventListener("click", () => toggle(indexOfBook));
 
   container.appendChild(card);
   card.style.cssText =
