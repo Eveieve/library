@@ -42,7 +42,7 @@ function displayBook(book, indexOfBook) {
   const remove = document.createElement("button");
 
   remove.style.cssText =
-    "background-color: rgb(79, 160, 149); color: white; border: none; font-size: medium; font-weight: 700; border-radius: .3rem; width: 8rem; height: 2.5rem";
+    "cursor: pointer;box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);background-color: rgb(79, 160, 149); color: white; border: none; font-size: medium; font-weight: 700; border-radius: .3rem; width: 8rem; height: 2.5rem";
   remove.textContent = "Remove";
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
@@ -58,6 +58,7 @@ function displayBook(book, indexOfBook) {
     myLibrary[i].isRead =
       myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
+
     updateBooks();
   }
 
@@ -65,10 +66,10 @@ function displayBook(book, indexOfBook) {
   // Toggle
   const readToggle = card.querySelector("p:nth-child(4)");
   readToggle.addEventListener("click", () => toggle(indexOfBook));
-
+  readToggle.classList.add = "read";
   container.appendChild(card);
   card.style.cssText =
-    "background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; border-radius:.5rem; padding: 2rem;";
+    " box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; min-height: 10rem;border-radius:.5rem; padding: 2rem;";
 
   document.querySelector("form").reset();
 }
