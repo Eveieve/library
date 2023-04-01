@@ -1,28 +1,32 @@
 /* eslint-disable operator-linebreak */
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, readStatus) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = isRead;
+  this.readStatus = readStatus;
 }
 
-function addBookToLibrary() {
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
-  let isRead = document.getElementById("read");
+// function addBookToLibrary() {
+//   const title = document.getElementById("title").value;
+//   const author = document.getElementById("author").value;
+//   const pages = document.getElementById("pages").value;
+//   let readStatus = document.getElementById("read");
 
-  if (isRead.checked === true) {
-    isRead = "Read";
-  } else isRead = "Not read yet";
+//   if (readStatus.checked === true) {
+//     readStatus = "Read";
+//   } else readStatus = "Not read yet";
 
-  const book = new Book(title, author, pages, isRead);
+//   const book = new Book(title, author, pages, readStatus);
 
+//   myLibrary.push(book);
+
+//   return myLibrary;
+// }
+
+function addBookToLibrary(book) {
   myLibrary.push(book);
-
-  return myLibrary;
 }
 
 const container = document.querySelector(".container");
@@ -55,8 +59,8 @@ function displayBook(book, indexOfBook) {
 
   function toggle(i) {
     // Book at certain indexOfBook...
-    myLibrary[i].isRead =
-      myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
+    myLibrary[i].readStatus =
+      myLibrary[i].readStatus === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
 
     updateBooks();
