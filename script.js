@@ -1,11 +1,13 @@
 /* eslint-disable operator-linebreak */
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
+function Book(title, author, pages, readStatus, id) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.readStatus = readStatus;
+
+  this.id = id;
 }
 
 // function addBookToLibrary() {
@@ -30,9 +32,14 @@ function addBookToLibrary(book) {
 }
 
 function removeBookFromLibrary(bookIndex) {
-  myLibrary.splice(bookIndex, 1);
-  updateBooks(); //
+  // if each book had an id property ...
+  // find which book's id prpoerty matches the bookIndex param...
+  const index = myLibrary.findIndex((book) => book.id === bookIndex);
+  // how is js gonna know what bookIndex it is?
+  // Unless I pass a specific number into it?
+  myLibrary.splice(index, 1);
 }
+
 const container = document.querySelector(".container");
 const add = document.querySelector(".add");
 
