@@ -29,6 +29,10 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function removeBookFromLibrary(bookIndex) {
+  myLibrary.splice(bookIndex, 1);
+  updateBooks(); //
+}
 const container = document.querySelector(".container");
 const add = document.querySelector(".add");
 
@@ -50,12 +54,6 @@ function displayBook(book, indexOfBook) {
   remove.textContent = "Remove";
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
-
-  function removeBook(i) {
-    myLibrary.splice(i, 1);
-    // eslint-disable-next-line no-use-before-define
-    updateBooks(); //
-  }
 
   function toggle(i) {
     // Book at certain indexOfBook...
