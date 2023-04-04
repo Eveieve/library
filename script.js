@@ -1,57 +1,46 @@
 /* eslint-disable operator-linebreak */
 const myLibrary = [];
 
-function Book(title, author, pages, readStatus, id) {
+function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.readStatus = readStatus;
-
-  this.id = id;
+  this.isRead = isRead;
 }
 
-// function addBookToLibrary() {
-//   const title = document.getElementById("title").value;
-//   const author = document.getElementById("author").value;
-//   const pages = document.getElementById("pages").value;
-//   let readStatus = document.getElementById("read");
+function addBookToLibrary() {
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  let isRead = document.getElementById("read");
 
-//   if (readStatus.checked === true) {
-//     readStatus = "Read";
-//   } else readStatus = "Not read yet";
+  if (isRead.checked === true) {
+    isRead = "Read";
+  } else isRead = "Not read yet";
 
-//   const book = new Book(title, author, pages, readStatus);
+  const book = new Book(title, author, pages, isRead);
 
-//   myLibrary.push(book);
-
-//   return myLibrary;
-// }
-
-function addBookToLibrary(book) {
   myLibrary.push(book);
-}
 
-function removeBookFromLibrary(bookIndex) {
-  // if each book had an id property ...
-  // find which book's id prpoerty matches the bookIndex param...
-  const index = myLibrary.findIndex((book) => book.id === bookIndex);
-  // how is js gonna know what bookIndex it is?
-  // Unless I pass a specific number into it?
-  myLibrary.splice(index, 1);
+  return myLibrary;
 }
+const book1 = new Book("Pride and Prejudice", "Jane Austen", "328", "Read");
 
 const container = document.querySelector(".container");
 const add = document.querySelector(".add");
 
+myLibrary.push(book1);
+displayBook(book1);
+
 function displayBook(book, indexOfBook) {
   const card = document.createElement("div");
-  for (const property in book) {
-    const bookEl = document.createElement("p");
 
-    bookEl.textContent = `${book[property]}`;
-    console.log(indexOfBook); // already knows indexOfBook of each thing!
+  Object.keys(book).forEach((key) => {
+    const bookEl = document.createElement("p");
+    bookEl.textContent = `${book[key]}`;
+    console.log(indexOfBook);
     card.appendChild(bookEl);
-  }
+  });
 
   // create removeBtn
   const remove = document.createElement("button");
@@ -62,10 +51,16 @@ function displayBook(book, indexOfBook) {
   remove.classList.add = ("removeBtn", "property");
   card.appendChild(remove);
 
+  function removeBook(i) {
+    myLibrary.splice(i, 1);
+    // eslint-disable-next-line no-use-before-define
+    updateBooks(); //
+  }
+
   function toggle(i) {
     // Book at certain indexOfBook...
-    myLibrary[i].readStatus =
-      myLibrary[i].readStatus === "Read" ? "Not read yet" : "Read";
+    myLibrary[i].isRead =
+      myLibrary[i].isRead === "Read" ? "Not read yet" : "Read";
     // eslint-disable-next-line no-use-before-define
 
     updateBooks();
