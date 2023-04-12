@@ -62,21 +62,22 @@ function renderBook(book, indexOfBook) {
   removeBtn.textContent = "Remove";
   card.appendChild(removeBtn);
 
-  // removeBtn.addEventListener("click", () => removeBook(indexOfBook));
-  // Toggle
-  // const readUI = card.querySelector("p:nth-child(4)");
-  // readUI.addEventListener("click", () => toggle(indexOfBook));
-  // readUI.classList.add = "read";
-  // container.appendChild(card);
-  // card.style.cssText =
-  //   " box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; min-height: 10rem;border-radius:.5rem; padding: 2rem;";
-  // document.querySelector("form").reset();
+  return { removeBtn };
 }
 
-//
+const { removeBtn } = renderBook();
+
+function removeBook(idOfBook) {
+  const filteredLibrary = myLibrary.filter((book) => book.id !== idOfBook);
+  return { filteredLibrary };
+}
+
+removeBtn.addEventListener("click", removeBook);
+
 const updateBooks = () => {
   while (container.childElementCount > 1) container.lastChild.remove();
-  myLibrary.forEach(renderBook);
+  const { filteredLibrary } = removeBook(); // OHHHHHHHHHHHHHHHHHH?
+  filteredLibrary.forEach(renderBook);
 };
 
 const modal = document.querySelector(".modal");
@@ -90,17 +91,3 @@ form.addEventListener("submit", () => {
   addBookToLibrary();
   updateBooks();
 });
-
-// function toggle(i) {
-//   // Book at certain indexOfBook...
-//   myLibrary[i].readStatus =
-//     myLibrary[i].readStatus === "Read" ? "Not read yet" : "Read";
-//   // eslint-disable-next-line no-use-before-define
-//   updateBooks();
-// }
-
-// function removeBook(i) {
-//   //   myLibrary.splice(i, 1);
-//   //   // eslint-disable-next-line no-use-before-define
-//   //   updateBooks(); //
-//   // }
