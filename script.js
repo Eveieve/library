@@ -38,13 +38,23 @@ console.log(book1);
 // rendering function
 function renderBook(book, indexOfBook) {
   const card = document.createElement("div");
+  container.appendChild(card);
 
-  Object.keys(book).forEach((key) => {
-    const bookEl = document.createElement("p");
-    bookEl.textContent = `${book[key]}`;
+  const titleEl = document.createElement("p");
+  titleEl.textContent = `${book.title}`;
+  card.appendChild(titleEl);
 
-    card.appendChild(bookEl);
-  });
+  const authorEl = document.createElement("p");
+  authorEl.textContent = `${book.author}`;
+  card.appendChild(authorEl);
+
+  const pagesEl = document.createElement("p");
+  pagesEl.textContent = `${book.pages}`;
+  card.appendChild(pagesEl);
+
+  const readStatusEl = document.createElement("p");
+  readStatusEl.textContent = `${book.readStatus}`;
+  card.appendChild(readStatusEl);
 
   // create removeBtn
   const removeBtn = document.createElement("button");
@@ -52,30 +62,18 @@ function renderBook(book, indexOfBook) {
   removeBtn.textContent = "Remove";
   card.appendChild(removeBtn);
 
-  function toggle(i) {
-    // Book at certain indexOfBook...
-    myLibrary[i].readStatus =
-      myLibrary[i].readStatus === "Read" ? "Not read yet" : "Read";
-    // eslint-disable-next-line no-use-before-define
-    updateBooks();
-  }
-  removeBtn.addEventListener("click", () => removeBook(indexOfBook));
+  // removeBtn.addEventListener("click", () => removeBook(indexOfBook));
   // Toggle
-  const readUI = card.querySelector("p:nth-child(4)");
-  readUI.addEventListener("click", () => toggle(indexOfBook));
-  readUI.classList.add = "read";
-  container.appendChild(card);
-  card.style.cssText =
-    " box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; min-height: 10rem;border-radius:.5rem; padding: 2rem;";
-  document.querySelector("form").reset();
+  // const readUI = card.querySelector("p:nth-child(4)");
+  // readUI.addEventListener("click", () => toggle(indexOfBook));
+  // readUI.classList.add = "read";
+  // container.appendChild(card);
+  // card.style.cssText =
+  //   " box-shadow: 0 0 1rem rgb(0 0 0 / 0.3);background-color: rgb(186, 209, 194); text-align: center; min-width:10rem; min-height: 10rem;border-radius:.5rem; padding: 2rem;";
+  // document.querySelector("form").reset();
 }
 
-function removeBook(i) {
-  myLibrary.splice(i, 1);
-  // eslint-disable-next-line no-use-before-define
-  updateBooks(); //
-}
-
+//
 const updateBooks = () => {
   while (container.childElementCount > 1) container.lastChild.remove();
   myLibrary.forEach(renderBook);
@@ -92,3 +90,17 @@ form.addEventListener("submit", () => {
   addBookToLibrary();
   updateBooks();
 });
+
+// function toggle(i) {
+//   // Book at certain indexOfBook...
+//   myLibrary[i].readStatus =
+//     myLibrary[i].readStatus === "Read" ? "Not read yet" : "Read";
+//   // eslint-disable-next-line no-use-before-define
+//   updateBooks();
+// }
+
+// function removeBook(i) {
+//   //   myLibrary.splice(i, 1);
+//   //   // eslint-disable-next-line no-use-before-define
+//   //   updateBooks(); //
+//   // }
